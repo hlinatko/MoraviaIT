@@ -1,6 +1,12 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Inventory.Web.Objects.InventoryHelpClass>>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<style type="text/css">
+        th {
+            background-color: #4CAF50;
+            color: black;
+        }
+</style>
 <head>
     <title></title>
 </head>
@@ -8,14 +14,15 @@
     Inventory Items:
     
     <table>
+        <tr>
+            <th>GUID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
             @foreach (var item in Model) {
 
-                <tr>
-                    <td>GUID:</td>
+                <tr>                    
                     <td>@item.GUID</td>
-                </tr>
-                <tr>
-                    <td>Name:</td>
                     <td>@item.Name</td>
                     <td><a href="~/remove/@item.GUID">Delete</a></td>
                 </tr>
