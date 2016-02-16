@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inventory.csproj", "{89B6FDA7-1C13-4808-AA21-A191D0E3FE34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6BDEC8B5-271F-4511-A824-2F283D1F191E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9F9E5ED6-FB4D-4760-8ADD-FA5E1E5E142B}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Tests", "Inventory.Tests\Inventory.Tests.csproj", "{8732DBCF-0DBC-49D6-A61E-9A1467066839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Persistence", "Inventory.Persistence\Inventory.Persistence.csproj", "{D133AE37-6A46-4767-BFB8-8DE44233A5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Web", "Inventory.Web\Inventory.Web.csproj", "{2B109D7B-D58C-447D-AA7F-BADE1A8F12D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89B6FDA7-1C13-4808-AA21-A191D0E3FE34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B6FDA7-1C13-4808-AA21-A191D0E3FE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B6FDA7-1C13-4808-AA21-A191D0E3FE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B6FDA7-1C13-4808-AA21-A191D0E3FE34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8732DBCF-0DBC-49D6-A61E-9A1467066839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8732DBCF-0DBC-49D6-A61E-9A1467066839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8732DBCF-0DBC-49D6-A61E-9A1467066839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8732DBCF-0DBC-49D6-A61E-9A1467066839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D133AE37-6A46-4767-BFB8-8DE44233A5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D133AE37-6A46-4767-BFB8-8DE44233A5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D133AE37-6A46-4767-BFB8-8DE44233A5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D133AE37-6A46-4767-BFB8-8DE44233A5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B109D7B-D58C-447D-AA7F-BADE1A8F12D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B109D7B-D58C-447D-AA7F-BADE1A8F12D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B109D7B-D58C-447D-AA7F-BADE1A8F12D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B109D7B-D58C-447D-AA7F-BADE1A8F12D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

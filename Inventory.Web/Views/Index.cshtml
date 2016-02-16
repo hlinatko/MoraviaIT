@@ -1,0 +1,28 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Inventory.Web.Objects.InventoryHelpClass>>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    Inventory Items:
+    
+    <table>
+            @foreach (var item in Model) {
+
+                <tr>
+                    <td>GUID:</td>
+                    <td>@item.GUID</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>@item.Name</td>
+                    <td><a href="~/remove/@item.GUID">Delete</a></td>
+                </tr>
+            }
+    </table>
+
+    <a href="/add">Add</a><br />
+    <a href="/remove">Remove by GUID</a>
+</body>
+</html>
