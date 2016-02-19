@@ -76,12 +76,22 @@ namespace Inventory.Web.Modules
         {
             //TODO: this should be calling _bus
 
+            //_bus.Send(new DeactivateInventoryItem(parameters.id, _.version));
+            //_bus.Send(new DeactivateInventoryItem(parameters.id, -1));
+
             string id = parameters.id;
 
             RestStore store = new RestStore();
-            store.Remove(id);
+            store.Remove(new Guid(id));
 
             return View["index", GetModel()];
+        };
+
+        Get["/getjson"] = _ =>
+        {
+            RestStore store = new RestStore();
+
+            return store.GetTextFromFile();
         };
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Inventory.Messaging;
 
 namespace Inventory.Web.Objects
 {
@@ -14,7 +15,30 @@ namespace Inventory.Web.Objects
 
     public class InventoryHelpClass
     {
-        public string GUID { get; set; }
-        public string Name { get; set; }
+        public Guid _guid { get; set; }
+        public IEnumerable<Event> _events { get; set; }
+
+        public string _types{
+            get
+            {
+                string sRet = "";
+
+                foreach (Event ev in _events)
+                {
+                    sRet += ev.GetType();
+
+                    if (ev.GetType() == typeof(InventoryItemCreated))
+                    {
+                        sRet += " (Name: " + ((InventoryItemCreated)ev).Name + ")";
+                    }
+
+                    sRet += ",";
+                }
+
+                sRet = sRet.Remove(sRet.Length - 1, 1);
+
+                return sRet;
+            }
+        }
     }
 }

@@ -11,25 +11,30 @@
     <title></title>
 </head>
 <body>
-    Inventory Items:
+    Inventory Events:
     
     <table>
         <tr>
             <th>GUID</th>
-            <th>Name</th>
+            <th>Details</th>
             <th>Actions</th>
         </tr>
             @foreach (var item in Model) {
 
                 <tr>                    
-                    <td>@item.GUID</td>
-                    <td>@item.Name</td>
-                    <td><a href="~/remove/@item.GUID">Delete</a></td>
+                    <td>@item._guid</td>
+                    <td>
+
+                        @item._types
+
+                    </td>
+                    <td><a href="~/remove/@item._guid">Delete</a></td>
                 </tr>
             }
     </table>
 
     <a href="/add">Add</a><br />
-    <a href="/remove">Remove by GUID</a>
+    <a href="/remove">Remove by GUID</a><br />
+    <a href="/getjson">Get JSON</a>
 </body>
 </html>

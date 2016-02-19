@@ -19,29 +19,26 @@ namespace Inventory.Web.Services
         {
             InventoryDataSource dataSource = GetFromFile();
 
-            foreach (Inventory.Messaging.Event ev in events)
-            {
-                if (ev.GetType() == typeof(InventoryItemCreated))
-                {
-                    Inventory.Messaging.InventoryItemCreated item = (InventoryItemCreated)ev;
-
-                    dataSource.data.Add(new InventoryHelpClass { GUID = item.Id.ToString(), Name = item.Name });
-                }              
-  
-                //TODO: handle other events and also store them all with types to call next method and others...
-                
-                //TODO: use version to handle concurrency, etc.
-            }                       
+            dataSource.data.Add(new InventoryHelpClass { _guid = aggregateId, _events = events });
 
             Save(dataSource);            
         }
         
         public List<Event> GetEventsForAggregate(Guid aggregateId)
         {
-            //TODO: call it properly...
+            InventoryDataSource dataSource = GetFromFile();
 
-            throw new NotImplementedException();
-                
+            List<Event> ret = null;
+            foreach (InventoryHelpClass inventoryHelp in dataSource.data)
+            {
+                if (inventoryHelp._guid == aggregateId)
+                {
+                    ret = (List<Event>)inventoryHelp._events;
+                    break;
+                }
+            }
+
+            return ret;                
         }
 
         //PetrK, new methods:
@@ -71,6 +68,16 @@ namespace Inventory.Web.Services
             return sRet;
         }
 
+        public JsonSerializerSettings GetJsonSettings()
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+
+            return settings;
+        }
+
         public InventoryDataSource GetFromFile()
         {
             InventoryDataSource data = null;
@@ -78,8 +85,8 @@ namespace Inventory.Web.Services
             string sText = GetTextFromFile();
 
             if (sText != "")
-            {
-                data = JsonConvert.DeserializeObject<InventoryDataSource>(sText);
+            {                
+                data = JsonConvert.DeserializeObject<InventoryDataSource>(sText, GetJsonSettings());
             }
             else
             {
@@ -92,19 +99,19 @@ namespace Inventory.Web.Services
 
         public void Save( InventoryDataSource dataSource)
         {
-            string sText = JsonConvert.SerializeObject(dataSource);
+            string sText = JsonConvert.SerializeObject(dataSource, GetJsonSettings());
 
             File.WriteAllText(GetPath(), sText);
         }
 
-        public void Remove(string id)
+        public void Remove(Guid guid)
         {
             InventoryDataSource dataSource = GetFromFile();
 
             InventoryHelpClass invToRemove = null;
             foreach (InventoryHelpClass invItem in dataSource.data)
             {
-                if (invItem.GUID == id)
+                if (invItem._guid == guid)
                 {
                     invToRemove = invItem;
                     break;
